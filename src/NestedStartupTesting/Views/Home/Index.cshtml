@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>NestedStartupTesting</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.get('Home').done(function () { $('#home').html('success'); }).fail(function () { $('#home').html('fail'); });
+        $.get('Sample').done(function () { $('#sample').html('success'); }).fail(function () { $('#sample').html('fail'); });
+        $.get('api/Home').done(function () { $('#apiHome').html('success'); }).fail(function () { $('#apiHome').html('fail'); });
+        $.get('api/Sample').done(function () { $('#apiSample').html('success'); }).fail(function () { $('#apiSample').html('fail'); });
+    </script>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Uri</th>
+        <th>Expected</th>
+        <th>Actual</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Home</td>
+        <td>success</td>
+        <td id="home"></td>
+    </tr>
+    <tr>
+        <td>Sample</td>
+        <td>fail</td>
+        <td id="sample"></td>
+    </tr>
+    <tr>
+        <td>api/Home</td>
+        <td>fail</td>
+        <td id="apiHome"></td>
+    </tr>
+    <tr>
+        <td>api/Sample</td>
+        <td>success</td>
+        <td id="apiSample"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

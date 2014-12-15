@@ -1,0 +1,5 @@
+artifacts/
+*.sln.ide
+*.suo
+*.user
+wwwroot/
