@@ -18,7 +18,7 @@ namespace NestedStartupTesting.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
-            ServiceCollectionCopy = services.CreateCopy();
+            ServiceCollectionCopy = new ServiceCollection { services };
 
             services.AddTransient(typeof(IAssemblyProvider), sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();

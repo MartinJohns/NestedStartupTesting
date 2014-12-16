@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Builder.Extensions;
-using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.DependencyInjection.Fallback;
