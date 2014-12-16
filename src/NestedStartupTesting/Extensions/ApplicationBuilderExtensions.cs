@@ -20,7 +20,7 @@ namespace NestedStartupTesting.Extensions
                 throw new ArgumentException("The path must not end with a '/'", nameof(pathMatch));
             }
 
-            var builder = app.New();
+            var builder = new ApplicationBuilder(null);
             builder.ApplicationServices = new DummyServiceProvider(services);
             builder.UseServices(serviceConfiguration);
 
