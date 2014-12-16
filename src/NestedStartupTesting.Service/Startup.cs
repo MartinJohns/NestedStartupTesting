@@ -8,11 +8,11 @@ using NestedStartupTesting.Shared;
 
 namespace NestedStartupTesting.Service
 {
-    public class ServiceStartup
+    public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient(typeof(IAssemblyProvider), sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(ServiceStartup).Namespace));
+            services.AddTransient(typeof(IAssemblyProvider), sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();
         }
 

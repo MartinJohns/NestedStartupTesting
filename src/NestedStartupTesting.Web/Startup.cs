@@ -12,7 +12,7 @@ namespace NestedStartupTesting.Web
 {
     public class Startup
     {
-        public ServiceStartup ServiceStartup { get; } = new ServiceStartup();
+        public Service.Startup ServiceStartup { get; } = new Service.Startup();
 
         public IServiceCollection ServiceCollectionCopy { get; set; }
 

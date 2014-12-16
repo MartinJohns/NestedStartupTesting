@@ -29,7 +29,7 @@ namespace NestedStartupTesting.Web.Extensions
             var branch = builder.Build();
 
             var options = new MapOptions
-            {
+            { 
                 Branch = branch,
                 PathMatch = pathMatch
             };
