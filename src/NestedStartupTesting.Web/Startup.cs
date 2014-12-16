@@ -3,10 +3,10 @@ using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
-using NestedStartupTesting.Extensions;
+using NestedStartupTesting.Web.Extensions;
 using NestedStartupTesting.Service;
 
-namespace NestedStartupTesting
+namespace NestedStartupTesting.Web
 {
     public class Startup
     {

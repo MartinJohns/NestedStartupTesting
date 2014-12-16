@@ -1,6 +1,6 @@
 ﻿using Microsoft.Framework.DependencyInjection;
 
-namespace NestedStartupTesting.Extensions
+namespace NestedStartupTesting.Web.Extensions
 {
     public static class ServiceCollectionExtensions
     {

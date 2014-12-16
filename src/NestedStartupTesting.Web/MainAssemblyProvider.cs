@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Runtime;
 
-namespace NestedStartupTesting
+namespace NestedStartupTesting.Web
 {
     internal class MainAssemblyProvider : DefaultAssemblyProvider
     {
@@ -15,7 +14,7 @@ namespace NestedStartupTesting
 
         protected override IEnumerable<ILibraryInformation> GetCandidateLibraries()
         {
-            return base.GetCandidateLibraries().Where(x => x.Name == "NestedStartupTesting");
+            return base.GetCandidateLibraries().Where(x => x.Name == "NestedStartupTesting.Web");
         }
     }
 }

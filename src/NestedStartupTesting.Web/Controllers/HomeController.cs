@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNet.Mvc;
 
-namespace NestedStartupTesting.Controllers
+namespace NestedStartupTesting.Web.Controllers
 {
     public class HomeController : Controller
     {

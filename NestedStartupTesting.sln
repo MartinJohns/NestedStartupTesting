@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.22310.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3951688B-0561-4139-B946-8B1796EBA46A}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NestedStartupTesting", "src\NestedStartupTesting\NestedStartupTesting.kproj", "{0A360582-C02D-41F9-9643-F07E78B62D5F}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "NestedStartupTesting", "src\NestedStartupTesting.Web\NestedStartupTesting.Web.kproj", "{0A360582-C02D-41F9-9643-F07E78B62D5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4EE36D01-3147-4CC9-9667-EEE6416A99EB}"
 	ProjectSection(SolutionItems) = preProject

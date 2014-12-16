@@ -4,7 +4,7 @@ using Microsoft.AspNet.Builder.Extensions;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
 
-namespace NestedStartupTesting.Extensions
+namespace NestedStartupTesting.Web.Extensions
 {
     public static class ApplicationBuilderExtensions
     {

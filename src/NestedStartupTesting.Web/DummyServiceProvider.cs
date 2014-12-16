@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.Framework.DependencyInjection;
 
-namespace NestedStartupTesting
+namespace NestedStartupTesting.Web
 {
     public class DummyServiceProvider : IServiceProvider
     {
