@@ -4,7 +4,8 @@
     "dependencies": {
         "Microsoft.AspNet.Server.IIS": "1.0.0-*",
         "Microsoft.AspNet.Mvc": "6.0.0-*",
-        "NestedStartupTesting.Service": ""
+        "NestedStartupTesting.Service": "",
+        "NestedStartupTesting.Shared": ""
     },
     "frameworks" : {
         "aspnet50" : { },
