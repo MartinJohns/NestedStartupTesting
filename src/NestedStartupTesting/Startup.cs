@@ -16,11 +16,7 @@ namespace NestedStartupTesting
 
         public void ConfigureServices(IServiceCollection services)
         {
-            ServiceCollectionCopy = new ServiceCollection();
-            foreach (var service in services)
-            {
-                ServiceCollectionCopy.Add(service);
-            }
+            ServiceCollectionCopy = services.CreateCopy();
 
             services.AddTransient<IAssemblyProvider, MainAssemblyProvider>();
             services.AddMvc();
