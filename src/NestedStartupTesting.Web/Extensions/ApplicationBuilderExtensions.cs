@@ -1,8 +1,10 @@
 ﻿using System;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Builder.Extensions;
+using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.DependencyInjection.Fallback;
 
 namespace NestedStartupTesting.Web.Extensions
 {
@@ -21,7 +23,7 @@ namespace NestedStartupTesting.Web.Extensions
             }
 
             var builder = new ApplicationBuilder(null);
-            builder.ApplicationServices = new DummyServiceProvider(services);
+            builder.ApplicationServices = services.BuildServiceProvider();
             builder.UseServices(serviceConfiguration);
 
             configuration(builder);
