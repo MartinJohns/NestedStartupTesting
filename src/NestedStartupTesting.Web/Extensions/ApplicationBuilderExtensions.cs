@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Builder.Extensions;
+using Microsoft.AspNet.Builder.Internal;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.DependencyInjection.Fallback;
+using System;
 
 namespace NestedStartupTesting.Web.Extensions
 {
@@ -21,15 +21,15 @@ namespace NestedStartupTesting.Web.Extensions
                 throw new ArgumentException("The path must not end with a '/'", nameof(pathMatch));
             }
 
+            serviceConfiguration(services);
             var builder = new ApplicationBuilder(null);
             builder.ApplicationServices = services.BuildServiceProvider();
-            builder.UseServices(serviceConfiguration);
 
             configuration(builder);
             var branch = builder.Build();
 
             var options = new MapOptions
-            { 
+            {
                 Branch = branch,
                 PathMatch = pathMatch
             };

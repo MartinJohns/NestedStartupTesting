@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Runtime;
 using NestedStartupTesting.Shared;
@@ -12,7 +11,9 @@ namespace NestedStartupTesting.Service
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient(typeof(IAssemblyProvider), sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
+            services.AddTransient(
+                typeof(IAssemblyProvider),
+                sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();
         }
 
@@ -22,8 +23,7 @@ namespace NestedStartupTesting.Service
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}",
-                    defaults: new { controller = "Home", action = "Index" });
+                    template: "{controller=Sample}/{action=Index}/{id?}");
             });
 
             app.Run(async context =>

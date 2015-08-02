@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNet.Builder;
+﻿using System.Collections.Generic;
+using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Routing;
 using Microsoft.Framework.DependencyInjection;
+using Microsoft.Framework.Internal;
 using Microsoft.Framework.Runtime;
-using NestedStartupTesting.Web.Extensions;
-using NestedStartupTesting.Service;
 using NestedStartupTesting.Shared;
+using NestedStartupTesting.Web.Extensions;
 
 namespace NestedStartupTesting.Web
 {
@@ -20,7 +20,9 @@ namespace NestedStartupTesting.Web
         {
             ServiceCollectionCopy = new ServiceCollection { services };
 
-            services.AddTransient(typeof(IAssemblyProvider), sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
+            services.AddTransient(
+                typeof(IAssemblyProvider),
+                sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();
         }
 
@@ -36,8 +38,7 @@ namespace NestedStartupTesting.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action}",
-                    defaults: new { controller = "Home", action = "Index" });
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

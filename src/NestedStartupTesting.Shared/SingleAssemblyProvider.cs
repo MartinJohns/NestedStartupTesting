@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.Runtime;
+using System.Linq;
 
 namespace NestedStartupTesting.Shared
 {
@@ -17,7 +17,8 @@ namespace NestedStartupTesting.Shared
 
         protected override IEnumerable<ILibraryInformation> GetCandidateLibraries()
         {
-            return base.GetCandidateLibraries().Where(x => x.Name == _assemblyName);
+            var result = base.GetCandidateLibraries().Where(x => x.Name == _assemblyName).ToList();
+            return result;
         }
     }
 }
