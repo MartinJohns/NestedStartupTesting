@@ -1,29 +1,44 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Builder.Extensions;
 using Microsoft.AspNet.Builder.Internal;
+using Microsoft.AspNet.Hosting.Startup;
 using Microsoft.AspNet.Http;
 using Microsoft.Framework.DependencyInjection;
 using System;
+using System.Collections.Generic;
 
 namespace NestedStartupTesting.Web.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
+        public static IApplicationBuilder IsolatedMap<T>(
+            this IApplicationBuilder app,
+            PathString pathMatch,
+            IServiceCollection services)
+        {
+            var startupLoader = app.ApplicationServices.GetRequiredService<IStartupLoader>();
+            var startupMethods = startupLoader.LoadMethods(typeof(T), new List<string>());
+
+            return app.IsolatedMap(
+                pathMatch,
+                startupMethods.ConfigureDelegate,
+                startupMethods.ConfigureServicesDelegate,
+                services);
+        }
+
         public static IApplicationBuilder IsolatedMap(
             this IApplicationBuilder app,
             PathString pathMatch,
             Action<IApplicationBuilder> configuration,
-            Action<IServiceCollection> serviceConfiguration,
+            Func<IServiceCollection, IServiceProvider> serviceConfiguration,
             IServiceCollection services)
         {
             if (pathMatch.HasValue && pathMatch.Value.EndsWith("/", StringComparison.Ordinal))
             {
                 throw new ArgumentException("The path must not end with a '/'", nameof(pathMatch));
             }
-
-            serviceConfiguration(services);
-            var serviceProvider = services.BuildServiceProvider();
-
+            
+            var serviceProvider = serviceConfiguration(services);
             var builder = new ApplicationBuilder(null);
             builder.ApplicationServices = serviceProvider;
 

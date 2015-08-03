@@ -7,6 +7,7 @@ using Microsoft.Framework.Internal;
 using Microsoft.Framework.Runtime;
 using NestedStartupTesting.Shared;
 using NestedStartupTesting.Web.Extensions;
+using System;
 
 namespace NestedStartupTesting.Web
 {
@@ -16,7 +17,7 @@ namespace NestedStartupTesting.Web
 
         public IServiceCollection ServiceCollectionCopy { get; set; }
 
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             ServiceCollectionCopy = new ServiceCollection { services };
 
@@ -24,14 +25,14 @@ namespace NestedStartupTesting.Web
                 typeof(IAssemblyProvider),
                 sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();
+
+            return services.BuildServiceProvider();
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.IsolatedMap(
+            app.IsolatedMap<Service.Startup>(
                 new PathString("/api"),
-                ServiceStartup.Configure,
-                ServiceStartup.ConfigureServices,
                 ServiceCollectionCopy);
 
             app.UseMvc(routes =>

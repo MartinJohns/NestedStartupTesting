@@ -4,17 +4,20 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Runtime;
 using NestedStartupTesting.Shared;
+using System;
 
 namespace NestedStartupTesting.Service
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddTransient(
                 typeof(IAssemblyProvider),
                 sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
             services.AddMvc();
+
+            return services.BuildServiceProvider();
         }
 
         public void Configure(IApplicationBuilder app)
