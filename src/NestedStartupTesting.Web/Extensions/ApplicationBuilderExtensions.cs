@@ -22,12 +22,36 @@ namespace NestedStartupTesting.Web.Extensions
             }
 
             serviceConfiguration(services);
+            var serviceProvider = services.BuildServiceProvider();
+
             var builder = new ApplicationBuilder(null);
-            builder.ApplicationServices = services.BuildServiceProvider();
+            builder.ApplicationServices = serviceProvider;
+
+            builder.Use(async (context, next) =>
+            {
+                var priorApplicationServices = context.ApplicationServices;
+                var scopeFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+
+                try
+                {
+                    using (var scope = scopeFactory.CreateScope())
+                    {
+                        context.ApplicationServices = serviceProvider;
+                        context.RequestServices = scope.ServiceProvider;
+
+                        await next();
+                    }
+                }
+                finally
+                {
+                    context.RequestServices = null;
+                    context.ApplicationServices = priorApplicationServices;
+                }
+            });
 
             configuration(builder);
-            var branch = builder.Build();
 
+            var branch = builder.Build();
             var options = new MapOptions
             {
                 Branch = branch,
