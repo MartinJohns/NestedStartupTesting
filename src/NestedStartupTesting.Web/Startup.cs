@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Internal;
-using Microsoft.Framework.Runtime;
 using NestedStartupTesting.Shared;
 using NestedStartupTesting.Web.Extensions;
 using System;
@@ -19,7 +17,11 @@ namespace NestedStartupTesting.Web
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            ServiceCollectionCopy = new ServiceCollection { services };
+            ServiceCollectionCopy = new ServiceCollection();
+            foreach (var service in services)
+            {
+                ServiceCollectionCopy.Add(service);
+            }
 
             services.AddTransient(
                 typeof(IAssemblyProvider),

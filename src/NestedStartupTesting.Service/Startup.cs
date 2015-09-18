@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
+using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.DependencyInjection;
-using Microsoft.Framework.Runtime;
 using NestedStartupTesting.Shared;
 using System;
 

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Builder.Extensions;
 using Microsoft.AspNet.Builder.Internal;
-using Microsoft.AspNet.Hosting.Startup;
 using Microsoft.AspNet.Http;
+using Microsoft.AspNet.Hosting.Startup;
 using Microsoft.Framework.DependencyInjection;
 using System;
 using System.Collections.Generic;

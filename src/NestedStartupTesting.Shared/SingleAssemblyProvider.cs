@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Framework.Runtime;
 using System.Linq;
+using Microsoft.AspNet.Mvc;
+using Microsoft.Dnx.Runtime;
 
 namespace NestedStartupTesting.Shared
 {
@@ -15,7 +15,7 @@ namespace NestedStartupTesting.Shared
             _assemblyName = assemblyName;
         }
 
-        protected override IEnumerable<ILibraryInformation> GetCandidateLibraries()
+        protected override IEnumerable<Library> GetCandidateLibraries()
         {
             var result = base.GetCandidateLibraries().Where(x => x.Name == _assemblyName).ToList();
             return result;
