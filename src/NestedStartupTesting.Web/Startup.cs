@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Dnx.Runtime;
 using Microsoft.Framework.DependencyInjection;
-using NestedStartupTesting.Shared;
 using NestedStartupTesting.Web.Extensions;
 using System;
+using System.Reflection;
 
 namespace NestedStartupTesting.Web
 {
@@ -22,11 +20,10 @@ namespace NestedStartupTesting.Web
             {
                 ServiceCollectionCopy.Add(service);
             }
-
-            services.AddTransient(
-                typeof(IAssemblyProvider),
-                sp => new SingleAssemblyProvider(sp.GetService<ILibraryManager>(), typeof(Startup).Namespace));
-            services.AddMvc();
+            
+            services
+                .AddMvc()
+                .AddControllersAsServices(new[] { typeof(Startup).GetTypeInfo().Assembly });
 
             return services.BuildServiceProvider();
         }

@@ -1245,16 +1245,14 @@
       "NestedStartupTesting.Service/1.0.0": {
         "type": "project",
         "dependencies": {
+          "Microsoft.AspNet.Mvc": "6.0.0-beta7",
           "Microsoft.AspNet.Server.IIS": "1.0.0-beta7",
           "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
           "NestedStartupTesting.Shared": null
         }
       },
       "NestedStartupTesting.Shared/1.0.0": {
-        "type": "project",
-        "dependencies": {
-          "Microsoft.AspNet.Mvc": "6.0.0-beta7"
-        }
+        "type": "project"
       },
       "Newtonsoft.Json/6.0.6": {
         "type": "package",
@@ -2464,6 +2462,7 @@
       "NestedStartupTesting.Service/1.0.0": {
         "type": "project",
         "dependencies": {
+          "Microsoft.AspNet.Mvc": "6.0.0-beta7",
           "Microsoft.AspNet.Server.IIS": "1.0.0-beta7",
           "Microsoft.AspNet.Server.WebListener": "1.0.0-beta7",
           "NestedStartupTesting.Shared": null
@@ -2472,7 +2471,7 @@
       "NestedStartupTesting.Shared/1.0.0": {
         "type": "project",
         "dependencies": {
-          "Microsoft.AspNet.Mvc": "6.0.0-beta7"
+          "System.Runtime": "4.0.21"
         }
       },
       "Newtonsoft.Json/6.0.6": {
@@ -6286,8 +6285,9 @@
     "": [
       "Microsoft.AspNet.Server.IIS >= 1.0.0-beta7",
       "Microsoft.AspNet.Server.WebListener >= 1.0.0-beta7",
-      "NestedStartupTesting.Service ",
-      "Microsoft.AspNet.Hosting >= 1.0.0-beta7"
+      "Microsoft.AspNet.Hosting >= 1.0.0-beta7",
+      "Microsoft.AspNet.Mvc >= 6.0.0-beta7",
+      "NestedStartupTesting.Service "
     ],
     "DNX,Version=v4.5.1": [],
     "DNXCore,Version=v5.0": []
